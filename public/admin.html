@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>大发后台管理</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">$.noConflict();</script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">大发后台管理</a>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container-fluid" id="admin">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">创建文章</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="form-group" :class="titleError">
+                                <label for="title">文章标题</label>
+                                <input type="text" class="form-control" id="title" placeholder="输入文章标题" v-model="title">
+                            </div>
+                            <div class="form-group" :class="contentError">
+                            	<label for="content">文章内容</label>
+                            	<textarea class="form-control input-lg" rows="22" id="content" v-model="content"></textarea>
+                            </div>
+                            <div class="form-group" :class="timeError">
+                            	<label for="time">时间</label>
+                            	<input type="datetime" class="form-control" id="time" placeholder="时间格式:yyyy-mm-dd hh:mm:ss" v-model="time">
+                            </div>
+                            <button class="btn btn-primary" id="submit-btn" @click.prevent="submitBtn()">提交文章</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+            	<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">文章列表</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" id="table">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>文章标题</th>
+                                    <th>发表时间</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr>
+                                    <td>1</td>
+                                    <td>11</td>
+                                    <td>11</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-xs">修改</button>
+                                        <button class="btn btn-danger btn-xs">删除</button>
+                                    </td>
+                                </tr> -->
+                                <tr is="a-list" :items="message" v-for="message in arr">
+                                    <!-- <template scope="props" slot="three">
+                                        <td>{{props.text}}</td>
+                                    </template> -->
+                                <tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="updataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">修改文章</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group" :class="utitleError">
+                                <label for="utitle">文章标题</label>
+                                <input type="text" class="form-control" id="utitle" placeholder="输入文章标题" v-model="utitle">
+                            </div>
+                            <div class="form-group" :class="ucontentError">
+                                <label for="ucontent">文章内容</label>
+                                <textarea class="form-control input-lg" rows="22" id="ucontent" v-model="ucontent"></textarea>
+                            </div>
+                            <div class="form-group" :class="utimeError">
+                                <label for="utime">时间</label>
+                                <input type="datetime" class="form-control" id="utime" placeholder="时间格式:yyyy-mm-dd hh:mm:ss" v-model="utime">
+                            </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="confirm-updata" @click="updateBtnModal()">确认修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="js/admin.js"></script>
+</body>
+
+</html>

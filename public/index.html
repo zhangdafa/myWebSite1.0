@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="大发">
+    <meta name="author" content="大发">
+    <title>大发站点</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+    $.noConflict();
+    </script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="css/index.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="mySite" class="mySite">
+        <div class="site-wrapper" v-if="cover">
+            <div class="site-wrapper-inner">
+                <div class="cover-container">
+                    <div class="inner cover">
+                        <h1 class="cover-heading">Great Fa</h1>
+                        <p class="lead">
+                            This is the cover of the site
+                        </p>
+                        <p class="lead">
+                            <button href="#" class="btn btn-lg btn-default" @click.prevent="cover=!cover;">Click me</button>
+                        </p>
+                    </div>
+                    <div class="mastfoot">
+                        <div class="inner">
+                            <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-else class="container">
+            <div class="blog-header">
+                <h1 class="blog-title">Great Fa SITE</h1>
+                <p class="lead blog-describe">这是一个练手的全栈项目</p>
+            </div>
+            <div class="row">
+                <!-- 左侧为内容 -->
+                <div class="col-md-9 blog-main">
+                    <post-blog v-for="blog in arr" :blog="blog"></post-blog>
+                </div>
+                <!-- 右侧为项目简介 -->
+                <div class="col-md-3 blog-intro">
+                    <h2>项目简介</h2>
+                    <h3>静态页面 <span class="label label-default">Bootstrap</span></h3>
+                    <h3>前端框架 <span class="label label-primary">Vue2.0</span></h3>
+                    <h3>js工具库 <span class="label label-success">jQuery</span></h3>
+                    <h3>后端框架 <span class="label label-info">Express</span></h3>
+                    <h3>工程化框架 <span class="label label-warning">Grunt</span></h3>
+                    <h3>数据库 <span class="label label-danger">mySql</span></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>
